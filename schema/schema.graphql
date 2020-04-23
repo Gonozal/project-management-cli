@@ -1,0 +1,62 @@
+input CreateProjectInput {
+  name: String!
+  key: String
+}
+
+input CreateTaskInput {
+  name: String!
+  description: String
+  projectKey: String!
+}
+
+scalar DateTime
+
+input GetDefaultKeyInput {
+  name: String!
+}
+
+type Mutation {
+  createProject(createProjectInput: CreateProjectInput!): Project!
+  createTask(createTaskInput: CreateTaskInput!): Task!
+  userSignIn(password: String!, name: String!): Token!
+  userSignOut: Token!
+}
+
+type Project {
+  id: ID!
+  name: String!
+  key: String!
+  tasks: [Task!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  projects: [Project!]!
+  defaultProjectKey(getDefaultKeyInput: GetDefaultKeyInput!): String!
+  tasks: [Task!]!
+  self: User!
+}
+
+type Task {
+  id: String!
+  sequence: Float!
+  name: String!
+  description: String!
+  projectId: String!
+  project: Project!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  key: String!
+}
+
+type Token {
+  token: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

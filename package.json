@@ -1,0 +1,88 @@
+{
+  "name": "project-management-cli",
+  "version": "0.0.0",
+  "author": "Sören Link",
+  "bin": {
+    "project-management-cli": "./bin/run"
+  },
+  "dependencies": {
+    "@graphql-codegen/visitor-plugin-common": "^1.13.2",
+    "@oclif/command": "^1.5.19",
+    "@oclif/config": "^1.14.0",
+    "@oclif/plugin-help": "^2.2.3",
+    "apollo-server-errors": "^2.4.1",
+    "class-validator": "^0.11.1",
+    "graphql-request": "^1.8.2",
+    "graphql-tag": "^2.10.3",
+    "save-dev": "0.0.1-security",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.13.1",
+    "@graphql-codegen/introspection": "^1.13.1",
+    "@graphql-codegen/plugin-helpers": "^1.13.2",
+    "@graphql-codegen/schema-ast": "^1.13.1",
+    "@graphql-codegen/typescript": "^1.13.1",
+    "@graphql-codegen/typescript-graphql-request": "^1.13.1",
+    "@graphql-codegen/typescript-operations": "^1.13.1",
+    "@oclif/dev-cli": "^1.22.2",
+    "@oclif/test": "^1.2.5",
+    "@types/chai": "^4.2.11",
+    "@types/dotenv-safe": "^8.1.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^12.12.34",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "globby": "^10.0.2",
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.1",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "topics": {
+      "project": {
+        "description": "Manage Projects"
+      }
+    },
+    "bin": "project-management-cli",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md",
+    "watch-gql": "graphql-codegen --watch",
+    "watch-ts": "tsc -w"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "parser": "typescript"
+  },
+  "types": "lib/index.d.ts"
+}

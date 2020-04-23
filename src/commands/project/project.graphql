@@ -1,0 +1,20 @@
+query getProjects {
+  projects {
+    key
+    name
+    createdAt
+  }
+}
+
+query getProjectKey($name: String!) {
+  defaultProjectKey(getDefaultKeyInput: {name: $name})
+}
+
+
+mutation createProject($createProjectInput: CreateProjectInput!) {
+  createProject(createProjectInput: $createProjectInput) {
+    key
+    name
+  }
+}
+

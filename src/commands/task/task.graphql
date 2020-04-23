@@ -1,0 +1,9 @@
+mutation createTask($createTaskInput: CreateTaskInput!) {
+  createTask(createTaskInput: $createTaskInput) {
+    name
+    key
+    project {
+      name
+    }
+  }
+}

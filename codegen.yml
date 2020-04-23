@@ -1,0 +1,16 @@
+schema: http://localhost:5000/graphql
+documents: "src/**/*.graphql"
+generates:
+  src/sdk.ts:
+    config:
+      preResolveTypes: true
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+  schema/schema.json:
+    plugins:
+      - introspection
+  schema/schema.graphql:
+    plugins:
+      - schema-ast
