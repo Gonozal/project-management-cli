@@ -18,7 +18,7 @@
     "tslib": "^1.11.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.13.1",
+    "@graphql-codegen/cli": "^1.21.8",
     "@graphql-codegen/introspection": "^1.13.1",
     "@graphql-codegen/plugin-helpers": "^1.13.2",
     "@graphql-codegen/schema-ast": "^1.13.1",
